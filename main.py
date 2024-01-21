@@ -26,7 +26,7 @@ if uploaded_file is not None:
 
     if st.button('Predict'):
         image = image.resize((IMG_SIZE*IMG_SIZE*3, 1))
-        feature_vector = np.array(feature_fast(image)).reshape(1, IMG_SIZE*IMG_SIZE)
+        feature_vector = np.array(feature_fast(image[:,:,0])).reshape(1, 500*500)
         label = str((model.predict(feature_vector))[0])
 
         st.header('Result')
